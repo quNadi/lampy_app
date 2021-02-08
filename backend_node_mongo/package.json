@@ -4,7 +4,7 @@
   "description": "db_express_mongo",
   "main": "server.js",
   "scripts": {
-    "test": ""
+    "start": "nodemon server.js"
   },
   "author": "ullu",
   "license": "ISC",
