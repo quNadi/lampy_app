@@ -13,6 +13,10 @@ app.use(bodyparser.json());
 
 app.use(bodyparser.urlencoded({extended:true}));
 
+const db=require("./models");
+db.mongoose.connect(db.url,{ useNewUrlParser:true, useUnifiedTopology:true}).then(()=>{ console.log("connected to the MongoDB lampy");}).catch(err=>{ console.log("Cannot connect",err);
+process.exit()});
+
 app.get("/",(req,res)=> {
     res.json({message: "waiting"});
 });
