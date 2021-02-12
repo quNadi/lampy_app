@@ -2,7 +2,7 @@ const db=require("../models");
 const LampProducent=db.lampy;
 
 exports.create=(req,res)=> {
-    if(!req.body.name) {
+    if (!req.body.name) {
         res.status(400).send({ message: "Content can't be empty"});
         return;
     }
