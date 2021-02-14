@@ -19,7 +19,7 @@ export default new Router({
         },
         {
             path:"/addnew",
-            name: "addnewlamp",
+            name: "addnew",
             component:()=>import("./components/AddNewLamp")
         }
     ]

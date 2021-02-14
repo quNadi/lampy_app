@@ -1,76 +1,48 @@
 <template>
-
-     <validation-observer
-    ref="observer"
-    v-slot="{ invalid }"
-  >
-      <v-form
-    ref="form"
-    v-model="valid"
-    lazy-validation
-  >
+  <form>
     <v-text-field
-      v-model="lampy.name"
-      :counter="20"
+      v-model="name"
+      :error-messages="nameErrors"
+      :counter="10"
       label="Name"
       required
+      @input="$v.name.$touch()"
+      @blur="$v.name.$touch()"
     ></v-text-field>
-
-        <v-text-field
-      v-model="lampy.desc"
-      :counter="50"
-      label="Description"
-      required
-    ></v-text-field>
-
-         <v-text-field
-      v-model="lampy.category"
-      :counter="15"
-      label="Category"
-      required
-    ></v-text-field>
-
     <v-text-field
-      v-model="lampy.person"
-      
-      label="Contact Person"
+      v-model="email"
+      :error-messages="emailErrors"
+      label="E-mail"
       required
+      @input="$v.email.$touch()"
+      @blur="$v.email.$touch()"
     ></v-text-field>
-  <validation-provider
-        v-slot="{ errors }"
-        name="phoneNumber"
-        :rules="{
-          required: true,
-          digits: 9
-
-        }"
-      >
-        <v-text-field
-          v-model="phoneNumber"
-          :counter="9"
-          :error-messages="errors"
-          label="Phone Number"
-          required
-        ></v-text-field>
-      </validation-provider>
-
-    <v-btn
-      
-        class="mr-4"
-        type="submit"
-        :disabled="invalid"
-      >
-      Validate
-    </v-btn>
+    <v-select
+      v-model="select"
+      :items="items"
+      :error-messages="selectErrors"
+      label="Item"
+      required
+      @change="$v.select.$touch()"
+      @blur="$v.select.$touch()"
+    ></v-select>
+    <v-checkbox
+      v-model="checkbox"
+      :error-messages="checkboxErrors"
+      label="Do you agree?"
+      required
+      @change="$v.checkbox.$touch()"
+      @blur="$v.checkbox.$touch()"
+    ></v-checkbox>
 
     <v-btn
-      color="error"
       class="mr-4"
-      @click="reset"
+      @click="submit"
     >
-      Reset Form
+      submit
     </v-btn>
-
-  </v-form>
-     </validation-observer>
+    <v-btn @click="clear">
+      clear
+    </v-btn>
+  </form>
 </template>
