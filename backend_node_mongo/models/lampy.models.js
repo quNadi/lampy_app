@@ -4,7 +4,12 @@ module.exports=mongoose =>{
     var schema=mongoose.Schema(
             {name: String,
             description: String,
-        category:String,
+            category: [
+                {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: "Cat"
+                }
+            ],
     contact_person: String,
 phone: Number,
 price_category: String,

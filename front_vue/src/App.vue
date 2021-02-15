@@ -7,7 +7,7 @@
     absolute
     color="#fcb69f"
      dark
-     shrink-on-scroll  {{! fix }}
+     
 
       src="https://installationart.tv/wp-content/uploads/2019/05/light-art-installation-Light-Evaporating-With-People-by-TeamLab-installationart.tv_.jpg"
       scroll-target="#scrolling-techniques-2"
