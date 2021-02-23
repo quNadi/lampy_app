@@ -1,19 +1,16 @@
 const dbconfig=require("../config_db/db.config.js")
 const mongoose=require("mongoose");
-mongoose.Promise=global.Promise;
 
-const db={};
-db.mongoose=mongoose;
-db.url=dbconfig.url;
-db.lampy=require("./lampy.models.js")(mongoose);
-db.cat=require("./Cat")(mongoose);
+const Cat=require("./Cat");
 
+const conn=mongoose.createConnection(dbconfig.url,{ useNewUrlParser:true, useUnifiedTopology:true});
 
+const Catt=conn.model('Category', Cat);
 
 
 
 const createCat=function(cat){
-    return db.save(cat).then(docCat=> {
+    return Catt.create(cat).then(docCat=> {
         console.log( "Created Cat", docCat);
         return docCat
     }).catch(err=>{ console.log(err)});
@@ -32,4 +29,3 @@ var catB=await createCat({
 
 run()
 
-module.exports=db;

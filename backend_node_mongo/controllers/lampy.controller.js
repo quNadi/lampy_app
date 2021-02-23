@@ -8,16 +8,14 @@ exports.create=(req,res)=> {
     }
 
 const lampy=new LampProducent({
-    name: req.body.name,
+    title: req.body.name,
     description: req.body.description,
     category:req.body.category,
     contact_person: req.body.contact_person,
     phone: req.body.phone,
     price_category: req.body.price_category,
     website: req.body.website,
-    extras:req.body.extras,
-    change_order: req.body.change_order,
-    trade_terms: req.body.trade_terms
+    extras:req.body.extr
     });
 
     lampy.save(lampy).then(data => {

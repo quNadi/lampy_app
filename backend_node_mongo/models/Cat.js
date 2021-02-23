@@ -1,8 +1,6 @@
 const mongoose=require("mongoose");
 
-const Cat=mongoose.model(
-    "Cat",
-    new mongoose.Schema({
+const Cat= new mongoose.Schema({
         name: String,
         slug:String,
         lampBrands: [
@@ -12,6 +10,5 @@ const Cat=mongoose.model(
             }
         ]
     })
-);
 
 module.exports=Cat;
